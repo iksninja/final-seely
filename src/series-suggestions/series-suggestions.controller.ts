@@ -1,12 +1,12 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Req, UseGuards, HttpCode, Put, UseInterceptors } from '@nestjs/common';
-import { SeriesSuggestionsService } from './series-suggestions.service';
+import { paginateConfig, SeriesSuggestionsService } from './series-suggestions.service';
 import { CreateSeriesSuggestionDto } from './dto/create-series-suggestion.dto';
 import { UpdateSeriesSuggestionDto } from './dto/update-series-suggestion.dto';
 import { LoggedInDto } from '@app/auth/dto/logged-in.dto';
 import { Auth } from '@app/auth/entities/auth.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { IdDto } from '@app/common/dto/id.dto';
-import { Paginate, PaginateQuery } from 'nestjs-paginate';
+import { ApiPaginationQuery, Paginate, PaginateQuery } from 'nestjs-paginate';
 import { ScoreDto } from './dto/score.dto';
 import { ScoresService } from './scores.service';
 import { ScoreRemoverInterceptor } from '@app/interceptors/score-remover.interceptor';
@@ -29,6 +29,7 @@ export class SeriesSuggestionsController {
     return this.seriesSuggestionsService.create(createSeriesSuggestionDto, req.user);
   }
 
+  @ApiPaginationQuery(paginateConfig)
   @UseGuards(OptAuthGuard)
   @UseInterceptors(ScoreRemoverInterceptor)
   @Get()

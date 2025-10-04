@@ -11,7 +11,7 @@ import { Score } from './entities/score.entity';
 import { ScoreDto } from './dto/score.dto';
 import { User } from '@app/users/entities/user.entity';
 
-const paginateConfig: PaginateConfig<SeriesSuggestion> = {
+export const paginateConfig: PaginateConfig<SeriesSuggestion> = {
   sortableColumns:['id', 'name', 'avgScore', 'scoreCount'],
   searchableColumns: ['name', 'year', 'description', 'rating']
 }
