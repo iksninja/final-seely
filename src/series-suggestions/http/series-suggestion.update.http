@@ -17,6 +17,6 @@ Content-Type: application/json
 
 {
   "rating": {
-    "id": 3
+    "id": 4
   }
 }

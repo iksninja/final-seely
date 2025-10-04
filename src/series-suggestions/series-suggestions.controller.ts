@@ -43,7 +43,7 @@ export class SeriesSuggestionsController {
     return this.seriesSuggestionsService.findOne(idDto.id);
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'), ChkOwnerGuard)
   @Patch(':id')
   update(
     @Param() idDto: IdDto, 
@@ -54,7 +54,7 @@ export class SeriesSuggestionsController {
   }
 
   @HttpCode(204)
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'), ChkOwnerGuard)
   @Delete(':id')
   remove(
     @Param() idDto: IdDto,

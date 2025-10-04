@@ -1,28 +1,41 @@
+import {
+  CanActivate,
+  ExecutionContext,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { SeriesSuggestionsService } from '@app/series-suggestions/series-suggestions.service';
-import { CanActivate, ExecutionContext, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class ChkOwnerGuard implements CanActivate {
-
   constructor(
-    private readonly seriesSuggestionsService: SeriesSuggestionsService
+    private readonly seriesSuggestionsService: SeriesSuggestionsService,
   ) {}
-  
-  async canActivate(
-    context: ExecutionContext,
-  ): Promise<boolean> {
+
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest();
     const user = req.user;
-    const id = req.id;
+    const id = parseInt(req.params.id, 10);
 
-    const seriesSuggestionsService = await this.seriesSuggestionsService.findOne(id);
+    // if (!user?.username) {
+    //   throw new ForbiddenException('Missing user context');
+    // }
 
-    if (!seriesSuggestionsService) {
+    // if (isNaN(id)) {
+    //   throw new NotFoundException('Invalid series suggestion ID');
+    // }
+
+    const suggestion = await this.seriesSuggestionsService.findOne(id);
+
+    if (!suggestion) {
       throw new NotFoundException(`SeriesSuggestion not found: id=${id}`);
     }
-    if (seriesSuggestionsService.user?.username !== user.username) {
-        throw new ForbiddenException(`You are not the owner of this suggestion`);
+
+    if (suggestion.user?.username !== user.username) {
+      throw new ForbiddenException('You are not the owner of this suggestion');
     }
-  return true;
+
+    return true;
   }
 }

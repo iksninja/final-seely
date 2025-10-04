@@ -9,5 +9,5 @@ Content-Type: application/json
 
 
 # ### case: get
-GET /series-suggestions/11
+GET /series-suggestions/21
 Content-Type: application/json
