@@ -42,14 +42,17 @@ export class UsersService {
   }
 
   async upsertByKeycloakId(username: string, keycloakId: string): Promise<User> {
-    const result = await this.repository.upsert(
+    try {
+      return await this.repository.findOneByOrFail({ keycloakId });
+    } catch {
+     await this.repository.upsert(
       { username, keycloakId },
       {
         conflictPaths: ['keycloakId'],
       },
     );
-
     return this.repository.findOneByOrFail({ keycloakId });
+    }
   }
 
   remove(id: number) {

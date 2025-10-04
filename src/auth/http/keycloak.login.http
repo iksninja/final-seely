@@ -1,16 +1,2 @@
 ### Get redirect URL for Keycloak login
 GET /keycloak/redirect-to-login
-
-@ref state = {% response.body.state %}
-@ref codeVerifier = {% response.body.codeVerifier %}
-@ref redirectUrl = {% response.body.url %}
-
-### Exchange code for tokens
-POST /keycloak/login
-Content-Type: application/json
-
-{
-  "url": "code={{lWjLRZyTzABQBPefZNcmr-Z56WlkSFtwqI1FfR5Ailo}}&state={{m-XKJIWv5UJNqlIWcpw4j3zIkhViZp_nDNK5-xJ7Kxs}}",
-  "codeVerifier": "{{S256}}",
-  "state": "{{m-XKJIWv5UJNqlIWcpw4j3zIkhViZp_nDNK5-xJ7Kxs}}"
-}

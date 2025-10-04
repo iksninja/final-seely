@@ -24,3 +24,8 @@ Content-Type: application/json
   },
   "score": 8
 }
+
+### delete success
+# @ref test01
+DELETE /series-suggestions/31
+Authorization: Bearer {{test01.accessToken}}

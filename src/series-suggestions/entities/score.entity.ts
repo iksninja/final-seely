@@ -9,12 +9,13 @@ export class Score {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'int'})    
+    @Column({ type: 'int' })
     score: number;
 
-    @ManyToOne( () => SeriesSuggestion, { nullable: false })
-    @JoinColumn({ name: 'series_suggestion_id', referencedColumnName: 'id'})
-    seriesSuggestion : SeriesSuggestion;
+    @ManyToOne(() => SeriesSuggestion, suggestion => suggestion.scores, {
+        onDelete: 'CASCADE',
+    })
+    seriesSuggestion: SeriesSuggestion;
 
     @ManyToOne(() => User, { nullable: false })
     @JoinColumn({ name: 'username', referencedColumnName: 'username' })

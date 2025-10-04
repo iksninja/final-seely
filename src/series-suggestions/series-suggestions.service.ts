@@ -46,7 +46,7 @@ export class SeriesSuggestionsService {
 
         const suggestion = await seriesSuggestionRepository.save({
         ...createSeriesSuggestionDto,
-        User,
+        user,
       });
 
       await this.scoresService.score(

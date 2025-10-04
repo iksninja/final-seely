@@ -1,7 +1,7 @@
 import { Rating } from "@app/ratings/entities/rating.entity";
 import { Score } from "@app/series-suggestions/entities/score.entity";
 import { User } from "@app/users/entities/user.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({ name: 'series_suggestions'})
@@ -37,5 +37,12 @@ export class SeriesSuggestion {
 
     @Column({ type: 'int', default: 0 })
     scoreCount: number;
+
+    @OneToMany(() => Score, score => score.seriesSuggestion, {
+    cascade: ['insert', 'update'],
+    onDelete: 'CASCADE',
+    })
+    scores: Score[];
+
 
 }
