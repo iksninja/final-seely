@@ -1,0 +1,13 @@
+### case: limit page sort
+GET /series-suggestions?limit=3&page=1&sortBy=name
+Content-Type: application/json
+
+
+# ### case: search
+GET /series-suggestions?limit=3&page=1&sortBy=name&search=2
+Content-Type: application/json
+
+
+# ### case: get
+GET /series-suggestions/11
+Content-Type: application/json

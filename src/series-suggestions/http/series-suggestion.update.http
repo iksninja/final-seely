@@ -1,0 +1,22 @@
+// food-recipes.create.http
+### auth login
+# @name test01
+POST /auth/login
+Content-Type: application/json
+
+{
+    "username": "test01",
+    "password": "test01"
+}
+
+### create success
+# @ref test01
+PATCH /series-suggestions/21
+Authorization: Bearer {{test01.accessToken}}
+Content-Type: application/json
+
+{
+  "rating": {
+    "id": 3
+  }
+}

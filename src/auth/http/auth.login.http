@@ -1,0 +1,27 @@
+### case: login success
+POST /auth/login
+Content-Type: application/json
+
+{
+    "username": "test01",
+    "password": "test01"
+}
+
+### case: not found username
+POST /auth/login
+Content-Type: application/json
+
+{
+    "username": "NOT_FOUND",
+    "password": "changeit"
+}
+
+### case: wrong password
+POST /auth/login
+Content-Type: application/json
+
+{
+    "username": "test01",
+    "password": "WRONG_PASS"
+}
+

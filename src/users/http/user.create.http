@@ -1,0 +1,21 @@
+// users.create.http
+
+### case: test01
+POST /users
+Content-Type: application/json
+
+{
+    "username": "test01",
+    "password": "test01",
+    "role": "USER"
+}
+
+### case: ninjatest
+POST /users
+Content-Type: application/json
+
+{
+    "username": "ninjatest",
+    "password": "Ninj@2534",
+    "role": "USER"
+}

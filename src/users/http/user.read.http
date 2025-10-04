@@ -1,0 +1,39 @@
+### case valid token
+GET /users/test01
+Authorization: Bearer VALID_TOKEN
+
+
+### case no token
+### no login = 401
+GET /users/test01
+
+
+### case invalid token
+### logged in but token not valid = 403 
+GET /users/test01
+Authorization: Bearer INVALID_TOKEN
+
+
+
+### get
+GET /users/
+
+
+### case: login
+# @name test01
+POST /auth/login
+Content-Type: application/json
+{
+  "username": "test01",
+  "password": "test01"
+}
+
+### case: valid token
+# @ref test01
+GET /users/me
+Authorization: Bearer {{test01.accessToken}}
+
+### case: valid token
+# @ref ninja
+GET /users/me
+Authorization: Bearer {{ninja.accessToken}}

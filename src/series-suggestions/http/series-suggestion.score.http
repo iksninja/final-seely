@@ -1,0 +1,69 @@
+  // food-recipes.rating.http
+  ### test01 login
+  # @name test01
+  POST /auth/login
+  Content-Type: application/json
+  
+  {
+      "username": "test01",
+      "password": "test01"
+  }
+  
+  ### case: test01 score
+  # @ref test01
+  PUT  /series-suggestions/11/scores
+  Authorization: Bearer {{test01.accessToken}}
+  Content-Type: application/json
+  
+  {
+    "score": 8
+  }
+  
+  
+  ### ninja login
+  # @name ninjatest
+  POST /auth/login
+  Content-Type: application/json
+  
+  {
+      "username": "ninjatest",
+      "password": "Ninj@2534"
+  }
+  
+  ### case: ninja score
+  # @ref ninjatest
+  PUT  /series-suggestions/11/scores
+  Authorization: Bearer {{ninjatest.accessToken}}
+  Content-Type: application/json
+  
+  {
+    "score": 7
+  }
+  
+  
+  ### case: view series-suggestions 11 by login
+    # @ref ninjatest
+  GET  /series-suggestions/11
+  Authorization: Bearer {{ninjatest.accessToken}}
+
+
+  ### case: view series-suggestions 11 not login
+  GET  /series-suggestions/11
+
+  ### case: not login score
+  PUT  /series-suggestions/11/scores
+  Content-Type: application/json
+  
+  {
+    "score": 8
+  }
+
+ ### case: ninja score
+  # @ref ninja
+  PUT  /series-suggestions/11/scores
+  Authorization: Bearer {{ninja.accessToken}}
+  Content-Type: application/json
+  
+  {
+    "score": 7
+  }

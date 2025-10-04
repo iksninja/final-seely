@@ -1,0 +1,26 @@
+// food-recipes.create.http
+### auth login
+# @name test01
+POST /auth/login
+Content-Type: application/json
+
+{
+    "username": "test01",
+    "password": "test01"
+}
+
+### create success
+# @ref test01
+POST /series-suggestions
+Authorization: Bearer {{test01.accessToken}}
+Content-Type: application/json
+
+{
+  "name": "Wednesday",
+  "year": "2022",
+  "description": "เรื่องราวของ เวนส์เดย์ แอดดัมส์ (Wednesday Addams) ลูกสาวสุดประหลาดจากตระกูล Addams ที่ถูกส่งเข้าโรงเรียน Nevermore Academy ซึ่งเป็นที่รวมตัวประหลาด เธอต้องเผชิญกับปริศนาการฆาตกรรม ความลึกลับ และเรื่องราวเหนือธรรมชาติในโรงเรียนแห่งนี้ พร้อมทั้งต้องปรับตัวเข้ากับรูมเมทที่แตกต่าง และพบเจอกับความสัมพันธ์กับเพื่อนใหม่ ",
+  "rating": {
+    "id": 5
+  },
+  "score": 8
+}
