@@ -23,8 +23,8 @@ async function bootstrap() {
 
   // Swagger init config
   const config = new DocumentBuilder()
-    .setTitle('Wongnok API')
-    .setDescription('The Wongnok API: Food Recipe for you')
+    .setTitle('Seely API')
+    .setDescription('The Seely API: Series Suggestions for you')
     .setVersion('1.0')
     .addBearerAuth(
       {

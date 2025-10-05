@@ -8,14 +8,14 @@ export class PasswordRemoverInterceptor implements NestInterceptor {
       map((repo) => {
         if (Array.isArray(repo)) {
           return repo.map(v=> {
-            if (v && typeof v === 'object' && 'password' in v){
-              const { password, ...rest} = v;
+            if ((v && typeof v === 'object' && 'password' in v) || (v && typeof v === 'object' && 'keycloakId' in v)) {
+              const { password, keycloakId, ...rest } = v;
               return rest;
             }
             return v;
           });
-        } else if (repo && typeof repo === 'object' && 'password' in repo){
-          const { password, ...rest} = repo;
+        } else if ((repo && typeof repo === 'object' && 'password' in repo) || (repo && typeof repo === 'object' && 'keycloakId' in repo)) {
+          const { password, keycloakId, ...rest } = repo;
               return rest;
             }
         // if ('password' in repo) {

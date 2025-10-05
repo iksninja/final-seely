@@ -19,3 +19,13 @@ Content-Type: application/json
     "password": "Ninj@2534",
     "role": "USER"
 }
+
+### case: ninjatest01
+POST /users
+Content-Type: application/json
+
+{
+    "username": "ninjatest01",
+    "password": "12345",
+    "role": "USER"
+}

@@ -13,23 +13,23 @@ export class RatingsService {
     Repository<Rating>,
   ) {}
 
-  create(createRatingDto: CreateRatingDto) {
-    return 'This action adds a new rating';
-  }
+  // create(createRatingDto: CreateRatingDto) {
+  //   return 'This action adds a new rating';
+  // }
 
   findAll() {
     return this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} rating`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} rating`;
+  // }
 
-  update(id: number, updateRatingDto: UpdateRatingDto) {
-    return `This action updates a #${id} rating`;
-  }
+  // update(id: number, updateRatingDto: UpdateRatingDto) {
+  //   return `This action updates a #${id} rating`;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} rating`;
-  }
+  // remove(id: number) {
+  //   return `This action removes a #${id} rating`;
+  // }
 }
