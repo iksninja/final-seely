@@ -13,7 +13,7 @@ export const createSeriesSuggestionSchema = z.object({
             .min(1, 'rating.id must be a number between 1-6')
             .max(6, 'rating.id must be a number between 1-6')
     }),
-    score: z.number().int()
+    score: z.number().int().min(1).max(10)
 })
     .strict();
 
